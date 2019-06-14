@@ -30,7 +30,7 @@ RUN pip install pip==19.1.1
 RUN pip3 install pipenv==2018.11.26
 
 # install apk
-RUN apk add --update --no-cache postgresql-dev gcc musl-dev make libxslt-dev
+RUN apk add --update --no-cache postgresql-dev gcc python3-dev musl-dev make libxslt-dev # psycopg2==2.8.2
 
 ### supervisor
 EXPOSE 9001
