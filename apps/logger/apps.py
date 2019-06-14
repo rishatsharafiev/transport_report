@@ -5,4 +5,4 @@ class LoggerConfig(AppConfig):
     """App config"""
 
     name = 'apps.logger'
-    verbose_name = 'Logger'
+    verbose_name = 'Логгер'
