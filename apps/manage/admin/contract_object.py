@@ -2,11 +2,13 @@ import json
 
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from django.db.models import Sum, Count, Avg
+from admin_totals.admin import ModelAdminTotals
 
 from .inlines import ObjectProgressInline
+from ..models import ContractObject
 
-
-class ContractObjectAdmin(admin.ModelAdmin):
+class ContractObjectAdmin(ModelAdminTotals):
     """Contractbject  Admin"""
     list_per_page = 20
 
@@ -22,11 +24,14 @@ class ContractObjectAdmin(admin.ModelAdmin):
             />
         '''.format(pairs=json.dumps(pairs, default=float).replace(' ', ''))
         return mark_safe(result)
-
+    map.short_description = 'Карта'
     readonly_fields = ('created', 'modified', 'deleted', 'map',)
 
     inlines = (ObjectProgressInline,)
-
+    list_display = ('id', 'contract', 'contractor', 'zone', 'price', 'start_date', 'finish_date')
+    list_filter = ('contract', 'contractor', 'zone', 'start_date', 'finish_date')
+    search_fields = ('contract__name', 'contractor__name',)
+    list_totals = [('price', Sum),]
     class Media:
         css = {
             'all': ('https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1549984893',),

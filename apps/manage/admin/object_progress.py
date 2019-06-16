@@ -1,17 +1,13 @@
 from django.contrib import admin
+from django.db.models import Sum, Count, Avg
+from admin_totals.admin import ModelAdminTotals
 
-
-class ObjectProgressAdmin(admin.ModelAdmin):
+class ObjectProgressAdmin(ModelAdminTotals):
     """ObjectProgress Admin"""
     list_per_page = 20
     readonly_fields = ('created', 'modified', 'deleted',)
 
-    # list_display = ('id', 'guid', 'name', 'parent', 'updated_at',
-    #                 'get_retail_min_margin', 'get_retail_max_margin', 'get_retail_drop_margin',
-    #                 'get_special_max_margin',
-    #                 'get_online_min_margin', 'get_online_max_margin', 'get_online_drop_margin',
-    #                 'transport_price',)
-    # list_filter = ('is_available',)
-    #
-    # search_fields = ('name',)
-    # readonly_fields = ('created_at', 'updated_at',)
+    list_display = ('id', 'contract', 'contractobject', 'contractor', 'price', 'start_date', 'finish_date')
+    list_filter = ('contract', 'contractor', 'start_date', 'finish_date')
+    search_fields = ('contract__name', 'contractor__name',)
+    list_totals = [('price', Sum),]

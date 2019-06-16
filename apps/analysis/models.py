@@ -67,3 +67,23 @@ class ObjectProgress(models.Model):
         db_table = 'vcontract_objects'
         verbose_name = 'Выполнение по участкам'
         verbose_name_plural = 'Выполнение по участкам'
+
+class ObjectIntersect(models.Model):
+    # zone_id = models.BigIntegerField(blank=True, null=True)
+    zone = models.ForeignKey(Zone, models.PROTECT, blank=True, null=True, verbose_name='Геозона', related_name='+')
+    first_contract = models.TextField(blank=True, null=True, verbose_name='Первый контракт')
+    second_contract = models.TextField(blank=True, null=True, verbose_name='Второй контракт')
+    first_date = models.DateTimeField(blank=True, null=True, verbose_name='Первая дата')
+    second_date = models.DateTimeField(blank=True, null=True, verbose_name='Вторая дата')
+    first_price = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True, verbose_name='Первая цена')
+    second_price = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True, verbose_name='Вторая цена')
+    first_latitude = models.DecimalField(max_digits=30, decimal_places=20, blank=True, null=True)
+    first_longitude = models.DecimalField(max_digits=30, decimal_places=20, blank=True, null=True)
+    second_latitude = models.DecimalField(max_digits=30, decimal_places=20, blank=True, null=True)
+    second_longitude = models.DecimalField(max_digits=30, decimal_places=20, blank=True, null=True)
+    
+    class Meta:
+        managed = False  # Created from a view. Don't remove.
+        db_table = 'vobject_intersect'
+        verbose_name = 'Пересечение рабочих участков'
+        verbose_name_plural = 'Пересечения рабочих участков'
