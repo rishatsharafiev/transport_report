@@ -1,0 +1,26 @@
+.site-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 500;
+    color: #fff;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      margin-right: 16px;
+      height: 32px;
+      width: 21px;
+      background: svg-load("../images/brand-logo.svg") no-repeat center;
+    }
+  }
+
+  &.bg-primary {
+    background-color: #006bb6 !important;
+  }
+}

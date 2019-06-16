@@ -1,0 +1,47 @@
+.stat-conteiner {
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  h2 {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 600;
+    margin: 0 0 32px;
+  }
+
+  .stat-block {
+    width: 100%;
+    min-height: 200px;
+    background-color: rgba(22, 148, 73, 0.5);
+    padding: 24px 32px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &.success-status {
+      background-color: rgba(113, 188, 144, 0.5);
+    }
+
+    &.warn-status {
+      background-color: rgba(229, 57, 53, 0.5);
+    }
+
+    &.info-status {
+      background-color: rgba(98, 176, 255, 0.5);
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .stat-count {
+      color: #fff;
+      font-size: 42px;
+      font-weight: 600;
+    }
+  }
+}
