@@ -1,0 +1,11 @@
+{
+  "printWidth": 130,
+  "overrides": [
+    {
+      "files": "*.pcss",
+      "options": {
+        "printWidth": 180
+      }
+    }
+  ]
+}
