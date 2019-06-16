@@ -27,11 +27,13 @@ SECRET_KEY = env('SECRET_KEY', cast=str, default='f)x_76pg46@omifv%=f0evs(4fiqkb
 DEBUG = env('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
-INTERNAL_IPS = ['127.0.0.1', 'localhost']
+INTERNAL_IPS = ['127.0.0.1', 'localhost', 'digital.codedream.ru']
 
 # Application definition
 
 DJANGO_APPS = [
+    # 'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,18 +44,17 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'django_celery_beat',
-    'django_celery_results',
-    'django_celery_monitor',
+    # 'django_celery_beat',
+    # 'django_celery_results',
+    # 'django_celery_monitor',
     'raven.contrib.django.raven_compat',
     'debug_toolbar',
-    'material',
-    'material.frontend',
+    'admin_totals',
 ]
 
 LOCAL_APPS = [
-    'apps.logger.apps.LoggerConfig',
-    'apps.human.apps.HumanConfig',
+    'apps.manage.apps.ManageConfig',
+    'apps.analysis.apps.AnalisysConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -137,13 +138,14 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_PATH / 'static'
+# STATICFILES_DIRS = ['/home/hackaton/transport_report/static/']
 
 # Media files (Images, Video, pdf, etc)
 MEDIA_URL = '/media/'
